@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Arrays;
 
-public class DistinctValues {
+public class altWhileLoopDistinctValues {
     public static void main(String[] args) {
         System.out.print("Max 10 integers.\nEnter -1 to exit.\n");
         Scanner scnr = new Scanner(System.in);
@@ -10,7 +10,7 @@ public class DistinctValues {
         int count = 0; // Tracks the number of unique integers added
 
         while (count < 10) {
-            System.out.print("Enter an integer: ");
+            System.out.print("Enter an integer: \n");
             int userInput = scnr.nextInt(); // Store input
 
             // Check for -1 to exit
@@ -27,7 +27,7 @@ public class DistinctValues {
                 }
             }
 
-            // If not a duplicate, add the integer to the array
+            // If not a duplicate, add integer to the array
             if (!foundDuplicate) {
                 userInputArray[count] = userInput;
                 count++;
@@ -36,15 +36,16 @@ public class DistinctValues {
                 System.out.printf("Your input of %d already exists.\n", userInput);
             }
 
-            // REMOVE THIS LATER: Display the array after each input
+            // Display the array after each input (helps keep track of the Ints)
+            // This bit of code can be omitted without any issues
             System.out.println(Arrays.toString(userInputArray));
             System.out.println("\n--------------------");
         }
 
         // Sort the array and display the final list of unique integers
-        Arrays.sort(userInputArray, 0, count); // Sort only the portion of the array that was filled
-        System.out.println("You have entered " + count + " Unique Integers:");
-        System.out.println(Arrays.toString(Arrays.copyOf(userInputArray, count)));
+        Arrays.sort(userInputArray);
+        System.out.printf("You have entered %d Unique Integers:\n",count);
+        System.out.println(Arrays.toString(userInputArray));
 
         // Close Scanner
         scnr.close();
