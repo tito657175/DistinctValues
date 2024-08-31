@@ -4,7 +4,10 @@ public class ReverseText {
     // DO NOT MODIFY main!
    public static void main(String[] args) {
       Scanner scnr = new Scanner(System.in);
+      System.out.println("\nEnter a sentence you want to reverse");
       String s = scnr.nextLine();
+
+      //Returns reversedText method and prints
       System.out.print(reverseText(s) + "\n");
    }
 
