@@ -3,56 +3,49 @@ import java.util.Arrays;
 
 public class DistinctValues {
     public static void main(String[] args) {
-        System.out.println("\nMax 10 integers. Enter -1 to exit.");
-        System.out.println("Enter the first integer: ");
+        System.out.print("Max 10 integers.\nEnter -1 to exit.\n");
         Scanner scnr = new Scanner(System.in);
-        int userInput = scnr.nextInt();
 
-        // Declare empty array
         int userInputArray[] = new int[10];
+        int count = 0; // Tracks the number of unique integers added
 
-        // Start program loop until 10 ints
-        for (int index = 0; index < 10; index++) {
-            boolean foundDuplicate = false; // reset every loop
+        // Begin looping through integer selection 
+        while (count < 10) {
+            System.out.print("Enter an integer: \n");
+            int userInput = scnr.nextInt(); // Store input
 
-            // Check for -1
+            // Check for -1 to exit
             if (userInput == -1) {
-                System.out.println("Exiting the program");
                 break;
             }
 
-            // Check for duplicate
-            for (int i = 0; i < index; i++) {  // Only loop through the portion of the array that is filled
+            // Check for duplicates
+            boolean foundDuplicate = false;
+            for (int i = 0; i < count; i++) {
                 if (userInputArray[i] == userInput) {
                     foundDuplicate = true;
                     break; // Exit the loop as soon as a match is found
                 }
             }
 
-            // Feedback if duplicate int found
-            if (foundDuplicate) {
-                System.out.printf("Your input of %d already exists\n", userInput);
-                index--; // reset loop counter
+            // If not a duplicate, add integer to the array
+            if (!foundDuplicate) {
+                userInputArray[count] = userInput;
+                count++;
+                System.out.printf("Your input of %d was added to the list.\n", userInput);
             } else {
-                // If not a duplicate, add int to Array
-                userInputArray[index] = userInput;
-                System.out.printf("Your input of %d was added to the Array\n", userInput);
+                System.out.printf("Your input of %d already exists.\n", userInput);
             }
 
-            // REMOVE THIS LATER
-            System.out.println("Current Unsorted Array: " + Arrays.toString(userInputArray));
-            // REMOVE THIS LATER
+            // Display the array after each input (helps keep track of the Ints)
+            // This bit of code can be omitted without any issues
+            System.out.println(Arrays.toString(userInputArray));
+            System.out.println("\n--------------------");
+        }//End of loop
 
-            if (index < 9) { // only prompt for input if not the last index
-                System.out.print("\nEnter the next integer: \n");
-                userInput = scnr.nextInt(); // store next input
-            }
-        } // End of loop
-
-        // Sort Array
+        // Sort the array and display the final list of unique integers
         Arrays.sort(userInputArray);
-
-        // Print Entire Array
+        System.out.printf("You have entered %d Unique Integers:\n",count);
         System.out.println(Arrays.toString(userInputArray));
 
         // Close Scanner
