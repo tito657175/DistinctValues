@@ -26,4 +26,3 @@ public static String reverseText(String s) { //Accepts input variables
 }
 
 
-
