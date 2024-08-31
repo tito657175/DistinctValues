@@ -6,86 +6,61 @@ public class DistinctValues{
         System.out.print("Max 10 integers.\nEnter -1 to exit.\n");
         System.out.print("Enter the first integer: \n");
         Scanner scnr = new Scanner(System.in);
-        int userInput = scnr.nextInt(); //store first unchecked input
+        int userInput = scnr.nextInt(); //store input
 
-        //Declare empty array and make 10 index long
+        //Declare empty array
         int userInputArray[] = new int[10];
-        int count;
     
-        for (count = 0; count < 10; count++){
+        //Start program loop until 10 ints
+        for (int count = 0; count <= 10; count++){
+
+            boolean foundDuplicate = false; // reset every loop
+
+            //Check for -1
             if (userInput == -1){
                 Arrays.sort(userInputArray);
                 System.out.println("Here is the list of integers");
                 System.out.println(Arrays.toString(userInputArray));
                 break;
-            } else {
-                Arrays.sort(userInputArray);
-                System.out.println(Arrays.binarySearch(userInputArray, userInput));
-                System.out.println("\n--------------------");
-                if (Arrays.binarySearch(userInputArray, userInput) >= 0){ //returns positive if number is found
-                    count--; 
-                    System.out.printf("Your input of %d already exists\n" , userInput);
+
+            // Check for duplicate
+            } else if (foundDuplicate == false) {
+                // Loop through array check for int
+                for (int i = 0; i < count; i++) {
+                    if (userInputArray[i] == userInput) {
+                        foundDuplicate = true; 
+                        break; // Exit the loop as soon as a match is found
+                    }
+                }
+                // Feedback if duplicate int found
+                if (foundDuplicate) {
+                    System.out.printf("Your input of %d already exists\n", userInput);
+                    count --; // reset loop counter
+
+                //If no duplicate add int to Array
                 } else {
                     userInputArray[count] = userInput;
-                    System.out.printf("Your input of %d was added to the list\n" , userInput);
-                }
+                    System.out.printf("Your input of %d was added to the list\n", userInput);
             }
+
+            //REMOVE THIS LATER
             System.out.println("\n--------------------");
-            System.out.println(Arrays.toString(userInputArray));
+            System.out.println(Arrays.toString(userInputArray)); 
+            //REMOVE THIS LATER
 
             System.out.print("\nEnter the next integer: \n");
             userInput = scnr.nextInt(); //store next input
         }
+        
+    }//End of loop
 
-        System.out.println(Arrays.toString(userInputArray));
-        scnr.close();
-    }
-} 
-    /* //(DO NOT FORGET TO REMOVE) Reassign array for testing
-        userInput = new int[]{3, 3, 22, 6, 4, 3,7,-1,0,-1};
-        System.out.println(Arrays.toString(userInput));
-        System.out.println("--------------------------"); */
+    //Sort Array
+    Arrays.sort(userInputArray);
 
-    // //Check and stop at -1
-    // int cutInput[] = new int[10];
+    //Print Entire Array
+    System.out.println(Arrays.toString(userInputArray));
 
-    // for (int index = 0; index < userInputArray.length; index++){ 
-    //     if (userInputArray[index] == -1) {
-    //         break; //stops at -1
-    //     }
-    //     cutInput[index] = userInputArray[index];
-    // } 
-    // // TEST CutArray
-    // System.out.println(Arrays.toString(cutInput));
-    // System.out.println("--------------------------");
-
-    // // Sort array
-    // Arrays.sort(cutInput);
-    // // TEST cutArray
-    // System.out.println(Arrays.toString(cutInput));
-    // System.out.println("--------------------------");
-
-    // // Remove duplicates
-    //     int[] uniqueOutput = new int[cutInput.length];
-    //     int j = 0;
-
-    //     for (int i = 0; i < cutInput.length - 1; i++) {
-    //         if (cutInput[i] != cutInput[i + 1]) {
-    //             uniqueOutput[j++] = cutInput[i];
-    //         }
-    //     }
-    //      // Add the last array element
-    //      uniqueOutput[j++] = cutInput[cutInput.length - 1];
-
-    // //print entire array
-    // /* for (int index = 0; index < uniqueOutput.length; index++){
-    // System.out.println(uniqueOutput[index]);
-    // } */
-
-    // System.out.println(Arrays.toString(uniqueOutput));
-    // System.out.println("--------------------------");
-
-    //close scanner
-    //in.close();
-//     }
-// }
+    //Close Scanner
+    scnr.close();
+}
+}
