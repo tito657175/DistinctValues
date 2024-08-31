@@ -9,8 +9,9 @@ public class DistinctValues{
 
         //Declare empty array and make 10 index long
         int userInputArray[] = new int[10];
+        int count;
     
-        for (int i = 0; i < userInputArray.length; i++){ //run until end
+        for (count = 0; count < 10; count++){
             if (userInput == -1){
                 Arrays.sort(userInputArray);
                 System.out.println("Here is the list of integers");
@@ -21,16 +22,17 @@ public class DistinctValues{
                 System.out.println(Arrays.binarySearch(userInputArray, userInput));
                 System.out.println("\n--------------------");
                 if (Arrays.binarySearch(userInputArray, userInput) >= 0){ //returns positive if number is found
+                    count--; 
                     System.out.printf("Your input of %d already exists\n" , userInput);
                 } else {
-                    userInputArray[i] += userInput;
+                    userInputArray[count] += userInput;
                     System.out.printf("Your input of %d was added to the list\n" , userInput);
                 }
             }
             System.out.println("\n--------------------");
             System.out.println(Arrays.toString(userInputArray));
 
-            System.out.print("Enter the next integer: \n");
+            System.out.print("\nEnter the next integer: \n");
             userInput = scnr.nextInt(); //store next input
         }
 
