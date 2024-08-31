@@ -5,20 +5,39 @@ public class DistinctValues{
     public static void main(String[] args){
         System.out.print("Enter the first integer: \n");
         Scanner scnr = new Scanner(System.in);
-        int firstInput = scnr.nextInt(); //store first unchecked input
+        int userInput = scnr.nextInt(); //store first unchecked input
 
         //Declare empty array and make 10 index long
         int userInputArray[] = new int[10];
     
-        //Special condition for first int
-        if (firstInput == -1){
-            System.out.print("You have quit the program before any integers have been stored. \nInteresting Choice.\n");
+        for (int i = 0; i < userInputArray.length; i++){ //run until end
+            if (userInput == -1){
+                Arrays.sort(userInputArray);
+                System.out.println("Here is the list of integers");
+                System.out.println(Arrays.toString(userInputArray));
+                break;
+            } else {
+                Arrays.sort(userInputArray);
+                System.out.println(Arrays.binarySearch(userInputArray, userInput));
+                System.out.println("\n--------------------");
+                if (Arrays.binarySearch(userInputArray, userInput) >= 0){ //returns positive if number is found
+                    System.out.printf("Your input of %d already exists\n" , userInput);
+                } else {
+                    userInputArray[i] += userInput;
+                    System.out.printf("Your input of %d was added to the list\n" , userInput);
+                }
+            }
+            System.out.println("\n--------------------");
             System.out.println(Arrays.toString(userInputArray));
-        } else {
-            userInputArray[0] += firstInput;
-            System.out.println(Arrays.toString(userInputArray));
+
+            System.out.print("Enter the next integer: \n");
+            userInput = scnr.nextInt(); //store next input
         }
 
+        System.out.println(Arrays.toString(userInputArray));
+        scnr.close();
+    }
+} 
     /* //(DO NOT FORGET TO REMOVE) Reassign array for testing
         userInput = new int[]{3, 3, 22, 6, 4, 3,7,-1,0,-1};
         System.out.println(Arrays.toString(userInput));
@@ -65,5 +84,5 @@ public class DistinctValues{
 
     //close scanner
     //in.close();
-    }
-}
+//     }
+// }
