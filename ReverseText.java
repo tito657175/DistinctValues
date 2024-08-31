@@ -1,6 +1,6 @@
 import java.util.*;
+
 public class ReverseText {
-    
     // DO NOT MODIFY main!
    public static void main(String[] args) {
       Scanner scnr = new Scanner(System.in);
@@ -9,7 +9,7 @@ public class ReverseText {
    }
 
 // Reverse Method
-public static String reverseText(String s) { //Accepts input variable s
+public static String reverseText(String s) { //Accepts input variables
    String[] words = s.split(" ");  // Splits string into Array and adds spaces
    StringBuilder reversedSentence = new StringBuilder();
 
