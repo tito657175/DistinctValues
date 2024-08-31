@@ -3,6 +3,7 @@ import java.util.Arrays;
 
 public class DistinctValues{
     public static void main(String[] args){
+        System.out.print("Max 10 integers.\nEnter -1 to exit.\n");
         System.out.print("Enter the first integer: \n");
         Scanner scnr = new Scanner(System.in);
         int userInput = scnr.nextInt(); //store first unchecked input
@@ -25,7 +26,7 @@ public class DistinctValues{
                     count--; 
                     System.out.printf("Your input of %d already exists\n" , userInput);
                 } else {
-                    userInputArray[count] += userInput;
+                    userInputArray[count] = userInput;
                     System.out.printf("Your input of %d was added to the list\n" , userInput);
                 }
             }
